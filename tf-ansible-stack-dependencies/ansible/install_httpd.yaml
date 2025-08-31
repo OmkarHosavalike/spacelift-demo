@@ -9,14 +9,7 @@
         state: present
         update_cache: yes
 
-    - name: Install chrony
+    - name: Uninstall chrony
       ansible.builtin.apt:
         name: chrony
-        state: present
-        update_cache: yes
-    - name: Verify chrony installation
-      command: chronyd -v
-      register: chrony_check
-      ignore_errors: yes
-    - debug:
-        var: chrony_check
+        state: absent
