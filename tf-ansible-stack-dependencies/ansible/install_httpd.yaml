@@ -27,4 +27,6 @@
 
     - name: Check if uninstalled
       command: systemctl status chrony
-      ignore_errors: yes
+      register: chrony_status
+      failed_when:
+        "'Unit chrony.service could not be found.' not in chrony_status.stderr"
