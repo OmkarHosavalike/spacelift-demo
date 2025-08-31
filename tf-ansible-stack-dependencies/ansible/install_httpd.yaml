@@ -13,3 +13,7 @@
       ansible.builtin.apt:
         name: chrony
         state: absent
+        purge: yes
+        autoremove: yes
+    - name: Check if uninstalled
+      command: systemctl status chrony
