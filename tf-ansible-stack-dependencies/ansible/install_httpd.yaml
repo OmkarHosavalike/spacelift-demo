@@ -1,5 +1,5 @@
 ---
-- name: Install httpd and chrony
+- name: Install httpd and uninstall chrony
   hosts: all
   become: yes
   tasks:
@@ -15,5 +15,6 @@
         state: absent
         purge: yes
         autoremove: yes
+
     - name: Check if uninstalled
       command: systemctl status chrony
