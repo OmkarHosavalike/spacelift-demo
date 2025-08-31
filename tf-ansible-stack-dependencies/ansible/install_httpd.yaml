@@ -20,6 +20,7 @@
       ansible.builtin.file:
         path: /etc/init.d/chrony
         state: absent
+      ignore_errors: yes
 
     - name: Reload systemd to clear stale unit entries
       command: systemctl daemon-reload
