@@ -18,3 +18,4 @@
 
     - name: Check if uninstalled
       command: systemctl status chrony
+      ignore_errors: yes
