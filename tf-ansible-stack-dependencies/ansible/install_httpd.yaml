@@ -16,6 +16,14 @@
         purge: yes
         autoremove: yes
 
+    - name: Remove leftover init.d script if present
+      ansible.builtin.file:
+        path: /etc/init.d/chrony
+        state: absent
+
+    - name: Reload systemd to clear stale unit entries
+      command: systemctl daemon-reload
+
     - name: Check if uninstalled
       command: systemctl status chrony
       ignore_errors: yes
