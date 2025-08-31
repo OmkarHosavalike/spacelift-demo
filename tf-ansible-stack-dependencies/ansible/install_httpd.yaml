@@ -4,12 +4,19 @@
   become: yes
   tasks:
     - name: Install httpd
-      apt:
+      ansible.builtin.apt:
         name: apache2
-        state: present      
+        state: present
         update_cache: yes
+
     - name: Install chrony
-      apt:
+      ansible.builtin.apt:
         name: chrony
-        state: present      
+        state: present
         update_cache: yes
+    - name: Verify chrony installation
+      command: chronyd -v
+      register: chrony_check
+      ignore_errors: yes
+    - debug:
+        var: chrony_check
