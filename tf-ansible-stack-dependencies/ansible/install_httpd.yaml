@@ -1,10 +1,15 @@
 ---
-- name: Install httpd
+- name: Install httpd and chrony
   hosts: all
   become: yes
   tasks:
     - name: Install httpd
       apt:
         name: apache2
+        state: present      
+        update_cache: yes
+    - name: Install chrony
+      apt:
+        name: chrony
         state: present      
         update_cache: yes
